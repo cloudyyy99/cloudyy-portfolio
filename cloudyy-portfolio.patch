@@ -1,0 +1,267 @@
+diff --git a/src/pages/Home.jsx b/src/pages/Home.jsx
+new file mode 100644
+index 0000000..d1f23c9
+--- /dev/null
++++ b/src/pages/Home.jsx
+@@ -0,0 +1,44 @@
++import React from "react";
++import { Link } from "react-router-dom";
++
++export const Home = () => {
++  return (
++    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
++      <nav className="flex justify-between items-center px-6 py-4 bg-black bg-opacity-50 backdrop-blur-sm">
++        <h1 className="text-2xl font-bold">Cloudyy Portofolio</h1>
++        <div className="space-x-4">
++          <Link to="/" className="hover:text-blue-400">Home</Link>
++          <Link to="/identitas" className="hover:text-blue-400">Identitas</Link>
++          <Link to="/pendidikan" className="hover:text-blue-400">Pendidikan</Link>
++          <Link to="/pengalaman" className="hover:text-blue-400">Pengalaman</Link>
++        </div>
++      </nav>
++
++      <main className="flex flex-col items-center justify-center text-center py-20 px-4">
++        <h2 className="text-5xl font-bold mb-6 animate-fade-in">Halo, saya Cloudyy 👋</h2>
++        <p className="text-xl text-gray-300 max-w-xl animate-fade-in-delay-1">
++          Seorang web developer yang berfokus membangun pengalaman pengguna modern dengan React & Tailwind.
++        </p>
++      </main>
++
++      <footer className="py-6 text-center text-sm text-gray-400 border-t border-gray-700">
++        © 2025 Cloudyy. Dibuat dengan ❤️ menggunakan React + Tailwind CSS.
++      </footer>
++    </div>
++  );
++};
++
+diff --git a/src/pages/Identitas.jsx b/src/pages/Identitas.jsx
+new file mode 100644
+index 0000000..ba69188
+--- /dev/null
++++ b/src/pages/Identitas.jsx
+@@ -0,0 +1,19 @@
++import React from "react";
++
++export const Identitas = () => {
++  return (
++    <div className="min-h-screen p-8 text-white bg-gradient-to-b from-gray-900 to-black">
++      <h1 className="text-4xl font-bold mb-4">Identitas Saya</h1>
++      <p>Nama: Cloudyy</p>
++      <p>Email: cloudyy@example.com</p>
++      <p>Profesi: Web Developer</p>
++    </div>
++  );
++};
++
+diff --git a/src/pages/Pendidikan.jsx b/src/pages/Pendidikan.jsx
+new file mode 100644
+index 0000000..bbaf2cc
+--- /dev/null
++++ b/src/pages/Pendidikan.jsx
+@@ -0,0 +1,21 @@
++import React from "react";
++
++export const Pendidikan = () => {
++  return (
++    <div className="min-h-screen p-8 text-white bg-gradient-to-b from-gray-900 to-black">
++      <h1 className="text-4xl font-bold mb-4">Pendidikan</h1>
++      <ul className="list-disc list-inside">
++        <li>SMA Negeri 1 Contoh</li>
++        <li>Universitas Contoh - Teknik Informatika</li>
++      </ul>
++    </div>
++  );
++};
++
+diff --git a/src/pages/Pengalaman.jsx b/src/pages/Pengalaman.jsx
+new file mode 100644
+index 0000000..2d1b65e
+--- /dev/null
++++ b/src/pages/Pengalaman.jsx
+@@ -0,0 +1,21 @@
++import React from "react";
++
++export const Pengalaman = () => {
++  return (
++    <div className="min-h-screen p-8 text-white bg-gradient-to-b from-gray-900 to-black">
++      <h1 className="text-4xl font-bold mb-4">Pengalaman Develop App</h1>
++      <ul className="list-disc list-inside">
++        <li>Frontend Developer di ContohCorp (2023-2024)</li>
++        <li>Freelance React Developer (2022-sekarang)</li>
++      </ul>
++    </div>
++  );
++};
++
+diff --git a/src/App.jsx b/src/App.jsx
+new file mode 100644
+index 0000000..c735d4e
+--- /dev/null
++++ b/src/App.jsx
+@@ -0,0 +1,30 @@
++import { BrowserRouter, Routes, Route } from "react-router-dom";
++import { Home } from "./pages/Home";
++import { Identitas } from "./pages/Identitas";
++import { Pendidikan } from "./pages/Pendidikan";
++import { Pengalaman } from "./pages/Pengalaman";
++
++function App() {
++  return (
++    <BrowserRouter>
++      <Routes>
++        <Route index element={<Home />} />
++        <Route path="identitas" element={<Identitas />} />
++        <Route path="pendidikan" element={<Pendidikan />} />
++        <Route path="pengalaman" element={<Pengalaman />} />
++        <Route path="*" element={<div>404 Not Found</div>} />
++      </Routes>
++    </BrowserRouter>
++  );
++}
++
++export default App;
++
+diff --git a/src/main.jsx b/src/main.jsx
+new file mode 100644
+index 0000000..c496c0d
+--- /dev/null
++++ b/src/main.jsx
+@@ -0,0 +1,8 @@
++import React from "react";
++import { createRoot } from "react-dom/client";
++import "./index.css";
++import App from "./App";
++
++createRoot(document.getElementById("root")).render(<App />);
++
+diff --git a/src/index.css b/src/index.css
+new file mode 100644
+index 0000000..1ca4521
+--- /dev/null
++++ b/src/index.css
+@@ -0,0 +1,21 @@
++@tailwind base;
++@tailwind components;
++@tailwind utilities;
++
++:root {
++  --color-border: hsl(var(--border));
++  --color-background: hsl(var(--background));
++  --color-foreground: hsl(var(--foreground));
++
++  --color-primary: hsl(var(--primary));
++  --color-primary-foreground: hsl(var(--primary-foreground));
++  --color-card: hsl(var(--card));
++
++  --animate-fade-in: fade-in 0.7s ease-out forwards;
++  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
++  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
++  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
++  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
++  --animate-float: float 6s ease-in-out infinite;
++  --animate-meteor: meteor 5s linear infinite;
++  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
++}
++
+diff --git a/tailwind.config.js b/tailwind.config.js
+new file mode 100644
+index 0000000..9faadb0
+--- /dev/null
++++ b/tailwind.config.js
+@@ -0,0 +1,39 @@
++/** @type {import('tailwindcss').Config} */
++module.exports = {
++  content: [
++    "./index.html",
++    "./src/**/*.{js,jsx,ts,tsx}",
++  ],
++  theme: {
++    extend: {
++      keyframes: {
++        "fade-in": {
++          "0%": { opacity: "0", transform: "translateY(10px)" },
++          "100%": { opacity: "1", transform: "translateY(0)" },
++        },
++        float: {
++          "0%, 100%": { transform: "translateY(0)" },
++          "50%": { transform: "translateY(-10px)" },
++        },
++        meteor: {
++          "0%": { transform: "translateX(-100%) translateY(-100%)", opacity: "1" },
++          "100%": { transform: "translateX(100vw) translateY(100vh)", opacity: "0" },
++        },
++        "pulse-subtle": {
++          "0%, 100%": { opacity: "1" },
++          "50%": { opacity: "0.5" },
++        },
++      },
++      animation: {
++        "fade-in": "fade-in 0.7s ease-out forwards",
++        "fade-in-delay-1": "fade-in 0.7s ease-out 0.2s forwards",
++        "fade-in-delay-2": "fade-in 0.7s ease-out 0.4s forwards",
++        "fade-in-delay-3": "fade-in 0.7s ease-out 0.6s forwards",
++        "fade-in-delay-4": "fade-in 0.7s ease-out 0.8s forwards",
++        float: "float 6s ease-in-out infinite",
++        meteor: "meteor 5s linear infinite",
++        "pulse-subtle": "pulse-subtle 4s ease-in-out infinite",
++      },
++    },
++  },
++  plugins: [],
++};
++
+diff --git a/vite.config.js b/vite.config.js
+new file mode 100644
+index 0000000..fc3afdb
+--- /dev/null
++++ b/vite.config.js
+@@ -0,0 +1,12 @@
++import { defineConfig } from "vite";
++import react from "@vitejs/plugin-react";
++
++export default defineConfig({
++  plugins: [react()],
++  server: {
++    port: 5173,
++  },
++  resolve: {
++    alias: {
++      "@": "/src",
++    },
++  },
++});
++
+diff --git a/package.json b/package.json
+new file mode 100644
+index 0000000..ec7f9bb
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,34 @@
++{
++  "name": "cloudyy-portfolio",
++  "private": true,
++  "version": "0.0.1",
++  "type": "module",
++  "scripts": {
++    "dev": "vite",
++    "build": "vite build",
++    "preview": "vite preview",
++    "lint": "eslint ."
++  },
++  "dependencies": {
++    "react": "^19.1.0",
++    "react-dom": "^19.1.0",
++    "react-router-dom": "^7.6.0",
++    "clsx": "^2.1.1"
++  },
++  "devDependencies": {
++    "@vitejs/plugin-react": "^4.4.1",
++    "eslint": "^9.25.0",
++    "eslint-plugin-react-hooks": "^5.2.0",
++    "eslint-plugin-react-refresh": "^0.4.19",
++    "postcss": "^8.5.3",
++    "tailwindcss": "^4.1.7",
++    "vite": "^6.3.5",
++    "autoprefixer": "^10.4.21"
++  }
++}
